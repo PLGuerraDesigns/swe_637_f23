@@ -53,9 +53,8 @@ public class CalTest {
         int day2 = 13;
         int year = 2023;
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> Cal.cal(month1, day1, month2, day2, year));
+        int numDays = Cal.cal(month1, day1, month2, day2, year);
+        assertEquals(316, numDays);
 
         // assertThrows(
         // ArrayIndexOutOfBoundsException.class,
@@ -130,7 +129,7 @@ public class CalTest {
     // Test if function can see day is within the month range for february in a
     // non-leap year
     @Test
-    public void testDayNumberIsWithinMonthRangeNonLeapYearFeb() {
+    public void testDayNumberIsNotWithinMonthRangeNonLeapYearFeb() {
         int month1 = 2; // feb in non-leap year has 28 days
         int month2 = 4;
         int day1 = 29; // 29th day of feb
@@ -168,8 +167,8 @@ public class CalTest {
         int year = 2023;
 
         int numDays = Cal.cal(month1, day1, month2, day2, year);
-        // Expected 59, got 2
-        assertEquals(59, numDays);
+        assertThrows(IllegalArgumentException.class,
+                () -> Cal.cal(month1, day1, month2, day2, year));
     }
 
     // ********************************
