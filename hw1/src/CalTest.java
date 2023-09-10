@@ -1,3 +1,6 @@
+// NAMES: Pablo Guerra, Vishnu Neduncheliyan, Sharadha Shivakumar, Katherine Soltani
+// Assignment - Module 3
+
 package hw1.src;
 
 import org.junit.Test;
@@ -54,11 +57,7 @@ public class CalTest {
         int year = 2023;
 
         int numDays = Cal.cal(month1, day1, month2, day2, year);
-        assertEquals(316, numDays);
-
-        // assertThrows(
-        // ArrayIndexOutOfBoundsException.class,
-        // () -> Cal.cal(month1, day1, month2, day2, year));
+        assertEquals(315, numDays);
     }
 
     // (code should throw IllegalArgumentException)
@@ -69,8 +68,6 @@ public class CalTest {
         int day1 = 16;
         int day2 = 13;
         int year = 2023;
-
-        // Expect IllegalArgumentException but getting ArrayIndexOutOfBoundsException
 
         assertThrows(
                 IllegalArgumentException.class,
@@ -85,8 +82,6 @@ public class CalTest {
         int day1 = 16;
         int day2 = 13;
         int year = 2023;
-
-        // Expect IllegalArgumentException but getting ArrayIndexOutOfBoundsException
 
         assertThrows(
                 IllegalArgumentException.class,
@@ -121,6 +116,7 @@ public class CalTest {
         int day1 = 15;
         int day2 = 31; // day2 not in range of month2
         int year = 2000;
+
         assertThrows(IllegalArgumentException.class,
                 () -> Cal.cal(month1, day1, month2, day2, year));
 
@@ -140,6 +136,21 @@ public class CalTest {
 
     }
 
+    // Test if the dates are in the same month, will the code check to see if the
+    // days of the month are valid
+    // (code should throw Exception)
+    @Test
+    public void testSameMonthDaysOutOfMaxMonth() {
+        int month1 = 2;
+        int month2 = 2;
+        int day1 = 28;
+        int day2 = 31;
+        int year = 2023;
+
+        // java.lang.Error
+        assertThrows(IllegalArgumentException.class, () -> Cal.cal(month1, day1, month2, day2, year));
+    }
+
     // ********************************
     // Test precondition 5: month1<=month2
     @Test
@@ -151,7 +162,7 @@ public class CalTest {
         int year = 2023;
 
         int numDays = Cal.cal(month1, day1, month2, day2, year);
-        // Expected 28, got 58
+
         assertEquals(28, numDays);
 
     }
@@ -166,7 +177,6 @@ public class CalTest {
         int day2 = 2;
         int year = 2023;
 
-        int numDays = Cal.cal(month1, day1, month2, day2, year);
         assertThrows(IllegalArgumentException.class,
                 () -> Cal.cal(month1, day1, month2, day2, year));
     }
@@ -231,4 +241,28 @@ public class CalTest {
                 () -> Cal.cal(month1, day1, month2, day2, year));
 
     }
+
+    // Test for leap years
+    @Test
+    public void testForCenturyLeapYear() {
+        int month1 = 1;
+        int month2 = 2;
+        int day1 = 26;
+        int day2 = 29;
+        int year = 2400;
+
+        assertEquals(34, Cal.cal(month1, day1, month2, day2, year));
+    }
+
+    @Test
+    public void testForNonCenturyLeapYear() {
+        int month1 = 1;
+        int month2 = 2;
+        int day1 = 26;
+        int day2 = 29;
+        int year = 2024;
+
+        assertEquals(34, Cal.cal(month1, day1, month2, day2, year));
+    }
+
 }
