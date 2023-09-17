@@ -1,10 +1,13 @@
 package hw2.src;
 
 public class ReservationService {
-    private RankingService rankingService;
+    private RankingService rankingService = new RankingService();
 
-    public void reserve(Customer customer) {
-        rankingService = new RankingService();
-        int customerRank = rankingService.getRank(customer);
+    public int reserve(int customerId) {
+        return rankingService.getRank(customerId);
+    }
+
+    public void setRankingService(RankingService rs) {
+        this.rankingService = rs;
     }
 }
