@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System name="Assignment - Module 6">
+  <Parameters>
+    <Parameter id="0" name="A_month1" type="0">
+      <values>
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+        <value>4</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="1" name="B_month2" type="0">
+      <values>
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+        <value>4</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="2" name="C_day1" type="0">
+      <values>
+        <value>25</value>
+        <value>26</value>
+        <value>27</value>
+        <value>28</value>
+        <value>29</value>
+        <value>30</value>
+        <value>31</value>
+        <value>1</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="3" name="D_day2" type="0">
+      <values>
+        <value>25</value>
+        <value>26</value>
+        <value>27</value>
+        <value>28</value>
+        <value>29</value>
+        <value>30</value>
+        <value>31</value>
+        <value>1</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="5" name="E_year" type="0">
+      <values>
+        <value>1988</value>
+        <value>2000</value>
+        <value>1900</value>
+        <value>2021</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+  </Parameters>
+  <OutputParameters />
+  <Relations />
+  <Constraints>
+    <Constraint text="(A_month1=2)&amp;&amp;((E_year % 4 != 0) || ((E_year % 100 == 0) &amp;&amp; (E_year % 400 != 0)))=&gt;(C_day1&lt;=28)">
+      <Parameters>
+        <Parameter name="A_month1" />
+        <Parameter name="E_year" />
+        <Parameter name="C_day1" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(B_month2=2)&amp;&amp;((E_year % 4 != 0) || ((E_year % 100 == 0) &amp;&amp; (E_year % 400 != 0)))=&gt;(D_day2&lt;=28)">
+      <Parameters>
+        <Parameter name="B_month2" />
+        <Parameter name="E_year" />
+        <Parameter name="D_day2" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(A_month1=2)&amp;&amp;!((E_year % 4 != 0) || ((E_year % 100 == 0) &amp;&amp; (E_year % 400 != 0)))=&gt;(C_day1&lt;=29)">
+      <Parameters>
+        <Parameter name="A_month1" />
+        <Parameter name="E_year" />
+        <Parameter name="C_day1" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(B_month2=2)&amp;&amp;!((E_year % 4 != 0) || ((E_year % 100 == 0) &amp;&amp; (E_year % 400 != 0)))=&gt;(D_day2&lt;=29)">
+      <Parameters>
+        <Parameter name="B_month2" />
+        <Parameter name="E_year" />
+        <Parameter name="D_day2" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(A_month1 &lt;= B_month2)">
+      <Parameters>
+        <Parameter name="A_month1" />
+        <Parameter name="B_month2" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(A_month1== B_month2) =&gt; (C_day1&lt;=D_day2)">
+      <Parameters>
+        <Parameter name="A_month1" />
+        <Parameter name="B_month2" />
+        <Parameter name="C_day1" />
+        <Parameter name="D_day2" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(A_month1=4||A_month1=6||A_month1=9||A_month1=11)=&gt;(C_day1&lt;= 30)">
+      <Parameters>
+        <Parameter name="A_month1" />
+        <Parameter name="C_day1" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(B_month2=4||B_month2=6||B_month2=9||B_month2=11) =&gt;(D_day2&lt;= 30)">
+      <Parameters>
+        <Parameter name="B_month2" />
+        <Parameter name="D_day2" />
+      </Parameters>
+    </Constraint>
+  </Constraints>
+  <Testset doi="2">
+    <Testcase TCNo="0">
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>2</Value>
+      <Value>25</Value>
+      <Value>25</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="1">
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>25</Value>
+      <Value>26</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="2">
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>25</Value>
+      <Value>27</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="3">
+      <Value>4</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>25</Value>
+      <Value>28</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="4">
+      <Value>5</Value>
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>25</Value>
+      <Value>29</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="5">
+      <Value>6</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>25</Value>
+      <Value>30</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="6">
+      <Value>7</Value>
+      <Value>1</Value>
+      <Value>3</Value>
+      <Value>25</Value>
+      <Value>31</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="7">
+      <Value>8</Value>
+      <Value>2</Value>
+      <Value>4</Value>
+      <Value>25</Value>
+      <Value>1</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="8">
+      <Value>9</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>26</Value>
+      <Value>25</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="9">
+      <Value>10</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>26</Value>
+      <Value>26</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="10">
+      <Value>11</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>26</Value>
+      <Value>27</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="11">
+      <Value>12</Value>
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>26</Value>
+      <Value>28</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="12">
+      <Value>13</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>26</Value>
+      <Value>29</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="13">
+      <Value>14</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>26</Value>
+      <Value>30</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="14">
+      <Value>15</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>26</Value>
+      <Value>31</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="15">
+      <Value>16</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>26</Value>
+      <Value>1</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="16">
+      <Value>17</Value>
+      <Value>1</Value>
+      <Value>3</Value>
+      <Value>27</Value>
+      <Value>25</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="17">
+      <Value>18</Value>
+      <Value>2</Value>
+      <Value>4</Value>
+      <Value>27</Value>
+      <Value>26</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="18">
+      <Value>19</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>27</Value>
+      <Value>27</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="19">
+      <Value>20</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>27</Value>
+      <Value>28</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="20">
+      <Value>21</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>27</Value>
+      <Value>29</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="21">
+      <Value>22</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>27</Value>
+      <Value>30</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="22">
+      <Value>23</Value>
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>27</Value>
+      <Value>31</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="23">
+      <Value>24</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>27</Value>
+      <Value>1</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="24">
+      <Value>25</Value>
+      <Value>1</Value>
+      <Value>4</Value>
+      <Value>28</Value>
+      <Value>25</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="25">
+      <Value>26</Value>
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>28</Value>
+      <Value>26</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="26">
+      <Value>27</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>28</Value>
+      <Value>27</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="27">
+      <Value>28</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>28</Value>
+      <Value>28</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="28">
+      <Value>29</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>28</Value>
+      <Value>29</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="29">
+      <Value>30</Value>
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>28</Value>
+      <Value>30</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="30">
+      <Value>31</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>28</Value>
+      <Value>31</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="31">
+      <Value>32</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>28</Value>
+      <Value>1</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="32">
+      <Value>33</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>29</Value>
+      <Value>25</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="33">
+      <Value>34</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>29</Value>
+      <Value>26</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="34">
+      <Value>35</Value>
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>29</Value>
+      <Value>27</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="35">
+      <Value>36</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>29</Value>
+      <Value>28</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="36">
+      <Value>37</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>29</Value>
+      <Value>29</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="37">
+      <Value>38</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>29</Value>
+      <Value>30</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="38">
+      <Value>39</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>29</Value>
+      <Value>31</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="39">
+      <Value>40</Value>
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>29</Value>
+      <Value>1</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="40">
+      <Value>41</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>30</Value>
+      <Value>25</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="41">
+      <Value>42</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>30</Value>
+      <Value>26</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="42">
+      <Value>43</Value>
+      <Value>1</Value>
+      <Value>3</Value>
+      <Value>30</Value>
+      <Value>27</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="43">
+      <Value>44</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>30</Value>
+      <Value>28</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="44">
+      <Value>45</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>30</Value>
+      <Value>29</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="45">
+      <Value>46</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>30</Value>
+      <Value>30</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="46">
+      <Value>47</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>30</Value>
+      <Value>31</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="47">
+      <Value>48</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>30</Value>
+      <Value>1</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="48">
+      <Value>49</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>31</Value>
+      <Value>25</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="49">
+      <Value>50</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>31</Value>
+      <Value>26</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="50">
+      <Value>51</Value>
+      <Value>1</Value>
+      <Value>3</Value>
+      <Value>31</Value>
+      <Value>27</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="51">
+      <Value>52</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>31</Value>
+      <Value>28</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="52">
+      <Value>53</Value>
+      <Value>1</Value>
+      <Value>3</Value>
+      <Value>31</Value>
+      <Value>29</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="53">
+      <Value>54</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>31</Value>
+      <Value>30</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="54">
+      <Value>55</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>31</Value>
+      <Value>31</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="55">
+      <Value>56</Value>
+      <Value>3</Value>
+      <Value>4</Value>
+      <Value>31</Value>
+      <Value>1</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="56">
+      <Value>57</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>1</Value>
+      <Value>25</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="57">
+      <Value>58</Value>
+      <Value>2</Value>
+      <Value>2</Value>
+      <Value>1</Value>
+      <Value>26</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="58">
+      <Value>59</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>27</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="59">
+      <Value>60</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>1</Value>
+      <Value>28</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="60">
+      <Value>61</Value>
+      <Value>1</Value>
+      <Value>4</Value>
+      <Value>1</Value>
+      <Value>29</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="61">
+      <Value>62</Value>
+      <Value>1</Value>
+      <Value>3</Value>
+      <Value>1</Value>
+      <Value>30</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="62">
+      <Value>63</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>1</Value>
+      <Value>31</Value>
+      <Value>1988</Value>
+    </Testcase>
+    <Testcase TCNo="63">
+      <Value>64</Value>
+      <Value>4</Value>
+      <Value>4</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="64">
+      <Value>65</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>25</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="65">
+      <Value>66</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>25</Value>
+      <Value>26</Value>
+      <Value>2021</Value>
+    </Testcase>
+    <Testcase TCNo="66">
+      <Value>67</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>1900</Value>
+    </Testcase>
+    <Testcase TCNo="67">
+      <Value>68</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>27</Value>
+      <Value>30</Value>
+      <Value>2000</Value>
+    </Testcase>
+    <Testcase TCNo="68">
+      <Value>69</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>27</Value>
+      <Value>28</Value>
+      <Value>2021</Value>
+    </Testcase>
+  </Testset>
+  <Header>
+    <Value />
+    <Value>A_month1</Value>
+    <Value>B_month2</Value>
+    <Value>C_day1</Value>
+    <Value>D_day2</Value>
+    <Value>E_year</Value>
+  </Header>
+  <Stat-Data>
+    <ExecutionTime>0.038</ExecutionTime>
+    <MaxDomainSize>8</MaxDomainSize>
+    <MinDomainSize>4</MinDomainSize>
+    <TotalNoOfCombination>291</TotalNoOfCombination>
+    <TotalNoOfTests>69</TotalNoOfTests>
+    <Algorithm>IPOG</Algorithm>
+  </Stat-Data>
+</System>
+
